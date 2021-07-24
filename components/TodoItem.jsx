@@ -2,14 +2,24 @@ import React from "react";
 import { TouchableOpacity } from "react-native";
 import styled from "styled-components";
 import { MaterialIcons } from "@expo/vector-icons";
-
+import Animated, { SlideInRight } from "react-native-reanimated";
 const TodoItem = ({ item, pressed }) => {
   return (
     <TouchableOpacity onPress={pressed}>
-      <Info>
+      <Animated.View
+        entering={SlideInRight}
+        style={{
+          flexDirection: "row",
+          padding: 16,
+          marginTop: 16,
+          borderWidth: 1,
+          borderStyle: "dashed",
+          borderRadius: 10,
+        }}
+      >
         <MaterialIcons name="delete" size={18} color="#333" />
         <TodoText>{item}</TodoText>
-      </Info>
+      </Animated.View>
     </TouchableOpacity>
   );
 };

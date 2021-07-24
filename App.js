@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
+import { AnimatedLayout } from "react-native-reanimated";
 import {
   FlatList,
   Alert,
@@ -42,24 +43,24 @@ export default function App() {
           <AddTodo add={submitHandler} />
 
           <ListWrapper>
-            <FlatList
-              data={todos}
-              renderItem={({ item }) => (
-                <TodoItem
-                  item={item.text}
-                  pressed={() => {
-                    Alert.alert(`apagar?`, `quer apagar, ${item.text}`, [
-                      {
-                        text: "Cancel",
-                        onPress: () => {},
-                        style: "cancel",
-                      },
-                      { text: "OK", onPress: () => handleDelete(item.key) },
-                    ]);
-                  }}
-                />
-              )}
-            />
+              <FlatList
+                data={todos}
+                renderItem={({ item }) => (
+                  <TodoItem
+                    item={item.text}
+                    pressed={() => {
+                      Alert.alert(`apagar?`, `quer apagar, ${item.text}`, [
+                        {
+                          text: "Cancel",
+                          onPress: () => {},
+                          style: "cancel",
+                        },
+                        { text: "OK", onPress: () => handleDelete(item.key) },
+                      ]);
+                    }}
+                  />
+                )}
+              />
           </ListWrapper>
         </Content>
       </Container>
